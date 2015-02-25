@@ -16,30 +16,33 @@
 //= require_tree .
 
 
+$(function() {
+  hideRow();
+  $(".new-association").on("click", addRow);
+  $("#update_button").on("click", disableButton);
+  $(".delete-association").on("click", hideDeleted);
+});
+
+
 function disableButton() {
-  var button = document.getElementById("update_button");
-  setTimeout(function() {button.disabled = true;}, 1);
+  setTimeout(function() {
+    $("#update_button").attr("disabled", "disabled")
+  }, 1);
 }
 
 
 function hideRow() {
-  if (document.getElementById("show_hide_row") != "null") {
-    var row = document.getElementById("show_hide_row");
-    var last = row.lastElementChild;
-    last.style.display = 'none';
-  }
+  var row = $("#show_hide_row").children().last();
+    row.hide();
 }
 
 function addRow() {
-  if (document.getElementById("show_hide_row") != "null") {
-    var row = document.getElementById("show_hide_row");
-    var last = row.lastElementChild;
-    last.style.display = 'block';
-  }
+  var row = $("#show_hide_row").children().last();
+    row.show();
 }
 
-function hideDeleted(button) {
-  button.parentElement.parentElement.parentElement.style.display = 'none';
+function hideDeleted(event) {
+  $(event.target).closest(".association").hide();
 }
 
 function smoothScrolling() {
