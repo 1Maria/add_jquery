@@ -14,3 +14,34 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
+
+
+function disableButton() {
+  var button = document.getElementById("update_button");
+  setTimeout(function() {button.disabled = true;}, 1);
+}
+
+
+function hideRow() {
+  if (document.getElementById("show_hide_row") != "null") {
+    var row = document.getElementById("show_hide_row");
+    var last = row.lastElementChild;
+    last.style.display = 'none';
+  }
+}
+
+function addRow() {
+  if (document.getElementById("show_hide_row") != "null") {
+    var row = document.getElementById("show_hide_row");
+    var last = row.lastElementChild;
+    last.style.display = 'block';
+  }
+}
+
+function hideDeleted(button) {
+  button.parentElement.parentElement.parentElement.style.display = 'none';
+}
+
+function smoothScrolling() {
+
+}
